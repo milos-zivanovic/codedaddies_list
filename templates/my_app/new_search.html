@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 style="text-align: center">{{ search }}</h2>
+    <div class="row">
+        {% if results %}
+            {% for result in results %}
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="{{ result.url }}" target="_blank">
+                                <img src="{% static 'images/default_post_image.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <p>{{ result.title }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ result.url }}" target="_blank">View listing</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p><strong>No results to display.</strong></p>
+        {% endif %}
+    </div>
+{% endblock content %}
+
